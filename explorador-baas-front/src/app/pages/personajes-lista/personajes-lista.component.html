@@ -1,0 +1,80 @@
+<section class="contenedor">
+
+  <header class="encabezado">
+    <h2 class="titulo">Personajes</h2>
+    <p class="subtitulo">Filtra por nombre, estado y especie. Luego navega al detalle.</p>
+  </header>
+
+  <section class="tarjeta filtros">
+    <div class="grid-filtros">
+      <div class="campo">
+        <label class="etiqueta" for="filtroNombre">Nombre</label>
+        <input id="filtroNombre" [(ngModel)]="nombre" placeholder="Ej: Rick" />
+      </div>
+
+      <div class="campo">
+        <label class="etiqueta" for="filtroEstado">Estado</label>
+        <select id="filtroEstado" [(ngModel)]="estado">
+          <option *ngFor="let e of estadosDisponibles" [value]="e.valor">
+            {{ e.texto }}
+          </option>
+        </select>
+        <small class="ayuda">Alive / Dead / Unknown</small>
+      </div>
+
+      <div class="campo">
+        <label class="etiqueta" for="filtroEspecie">Especie</label>
+        <input id="filtroEspecie" [(ngModel)]="especie" placeholder="Ej: human, alien..." />
+      </div>
+    </div>
+
+    <div class="acciones">
+      <button class="btn btn-primario" (click)="buscar()" [disabled]="cargando">Buscar</button>
+      <button class="btn btn-secundario" (click)="limpiar()" [disabled]="cargando">Limpiar</button>
+    </div>
+  </section>
+
+  <section *ngIf="cargando" class="tarjeta estado">
+    <span class="badge">Cargando</span>
+    <span>Consultando personajes...</span>
+  </section>
+
+  <section *ngIf="errorMensaje" class="tarjeta estado error">
+    <span class="badge error">Error</span>
+    <span>{{ errorMensaje }}</span>
+  </section>
+
+  <section *ngIf="sinResultados && !cargando && !errorMensaje" class="tarjeta estado">
+    <span class="badge">Sin resultados</span>
+    <span>Prueba cambiando los filtros.</span>
+  </section>
+
+  <section *ngIf="pagina && !cargando && !errorMensaje" class="barra-resultados">
+    <div class="texto">
+      Página <strong>{{ pagina.paginaActual }}</strong> de <strong>{{ pagina.totalPaginas }}</strong>
+      · <strong>{{ pagina.totalRegistros }}</strong> resultados
+    </div>
+
+    <div class="paginacion">
+      <button class="btn btn-secundario" (click)="anterior()" [disabled]="!puedeIrAnterior">Anterior</button>
+      <button class="btn btn-secundario" (click)="siguiente()" [disabled]="!puedeIrSiguiente">Siguiente</button>
+    </div>
+  </section>
+
+  <section *ngIf="pagina && !cargando && !errorMensaje" class="grid">
+    <a class="tarjeta personaje" *ngFor="let p of pagina.resultados" [routerLink]="['/characters', p.id]">
+      <img class="imagen" [src]="p.imagenUrl" [alt]="p.nombre" />
+
+      <div class="info">
+        <div class="nombre">{{ p.nombre }}</div>
+
+        <div class="meta">
+          <div class="item"><span class="k">Estado:</span> <span class="v">{{ p.estado }}</span></div>
+          <div class="item"><span class="k">Especie:</span> <span class="v">{{ p.especie }}</span></div>
+          <div class="item"><span class="k">Ubicación:</span> <span class="v">{{ p.ubicacion }}</span></div>
+        </div>
+      </div>
+    </a>
+  </section>
+
+</section>

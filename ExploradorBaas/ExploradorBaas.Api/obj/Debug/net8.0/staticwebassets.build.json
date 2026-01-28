@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "yaSyFpvHtYU8rmZtQxWIJwsdpotVMvSBDJ6ZrGAfz10=",
+  "Source": "ExploradorBaas.Api",
+  "BasePath": "_content/ExploradorBaas.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

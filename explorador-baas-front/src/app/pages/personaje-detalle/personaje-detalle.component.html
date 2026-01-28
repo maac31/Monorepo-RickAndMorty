@@ -1,0 +1,34 @@
+<a class="volver" routerLink="/characters">← Volver</a>
+
+<section *ngIf="cargando" class="estado">Cargando...</section>
+
+<section *ngIf="errorMensaje" class="estado error">
+  {{ errorMensaje }}
+</section>
+
+<section *ngIf="personaje && !cargando && !errorMensaje" class="detalle">
+  <img class="imagen" [src]="personaje.imagenUrl" [alt]="personaje.nombre" />
+
+  <div class="info">
+    <h2>{{ personaje.nombre }}</h2>
+
+    <p><strong>Estado:</strong> {{ personaje.estado }}</p>
+    <p><strong>Especie:</strong> {{ personaje.especie }}</p>
+    <p><strong>Tipo:</strong> {{ personaje.tipo || 'N/A' }}</p>
+    <p><strong>Género:</strong> {{ personaje.genero }}</p>
+    <p><strong>Origen:</strong> {{ personaje.origen }}</p>
+    <p><strong>Ubicación:</strong> {{ personaje.ubicacion }}</p>
+  </div>
+</section>
+
+<section *ngIf="personaje && !cargando && !errorMensaje" class="episodios">
+  <h3>Episodios</h3>
+
+  <p *ngIf="episodios.length === 0">Sin episodios.</p>
+
+  <ul *ngIf="episodios.length > 0">
+    <li *ngFor="let e of episodios">
+      <strong>{{ e.codigo }}</strong> — {{ e.nombre }} ({{ e.fechaEmision }})
+    </li>
+  </ul>
+</section>

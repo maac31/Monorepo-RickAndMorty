@@ -1,0 +1,55 @@
+.volver {
+  display: inline-block;
+  margin-bottom: 12px;
+  text-decoration: none;
+  border: 1px solid #ddd;
+  padding: 6px 10px;
+  border-radius: 8px;
+  color: inherit;
+}
+
+.estado {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  margin: 12px 0;
+}
+
+.estado.error {
+  border-color: #f2b8b8;
+}
+
+.detalle {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 16px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.imagen {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.info h2 {
+  margin: 0 0 10px 0;
+}
+
+.info p {
+  margin: 4px 0;
+}
+
+.episodios {
+  margin-top: 16px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.episodios ul {
+  margin: 8px 0 0 16px;
+}
