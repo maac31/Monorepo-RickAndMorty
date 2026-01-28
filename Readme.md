@@ -1,8 +1,9 @@
-# Explorador BaaS — Rick & Morty (Monorepo)
+# Explorador BaaS — Rick & Morty 
+
 
 Proyecto fullstack que consume la Rick & Morty API mediante un backend intermedio obligatorio.
 - Backend: ASP.NET Core (.NET 8) + HttpClient tipado + EF Core + MySQL
-- Frontend: Angular (standalone) consumiendo exclusivamente el backend propio vía proxy
+- Frontend: Angular 
 
 ## Estructura
 - `/backend`  -> solución .NET (Script de mysql se encuentra aqui)
@@ -20,6 +21,6 @@ Proyecto fullstack que consume la Rick & Morty API mediante un backend intermedi
 
 # Base de datos (MySQL)
 
-## Opción A: Script SQL (recomendado para entregable)
+##Script SQL 
 Ejecuta el script:
 - `scripts/01_schema.sql`
